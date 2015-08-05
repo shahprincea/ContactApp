@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<title>Contact List App</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	</head>
+	<body>
+		<header class="jumbotron">
+			<h1>Contact List App</h1>
+		</header>
+		
+		<div class="container" ng-controller="AppCtrl">
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<form name="addform">
+							<td>
+								<div class="form-group" ng-class="{'has-error': addform.name.$invalid}">
+									<input type="text" required name="name" class="form-control" ng-model="contact.name" placeholder="Name" />
+								</div>
+							</td>
+							<td>
+								<div class="form-group" ng-class="{'has-error': addform.email.$invalid}">
+									<input type="email" required name="email" class="form-control" ng-model="contact.email" placeholder="Email" />
+								</div>
+							</td>
+							<td>
+								<div class="form-group" ng-class="{'has-error': addform.number.$invalid}">
+									<input type="text" required name="number" class="form-control" ng-model="contact.number" placeholder="Number" />
+								</div>
+							</td>
+							<td>
+								<button class="btn btn-primary" ng-click="addContact()">Add</button>
+								<button class="btn btn-primary" ng-click="updateContact(contact._id)">Update</button>
+								<button class="btn btn-info" ng-click="clearContact()">Clear</button>
+							</td>
+							</form>
+						</tr>
+						</tr>
+						<tr ng-repeat="contact in contactList">
+							<td>{{contact.name}}</td>
+							<td>{{contact.email}}</td>
+							<td>{{contact.number}}</td>
+							<td>
+								<button class="btn btn-danger" ng-click="removeContact(contact._id)">Remove</button>
+								<button class="btn btn-warning" ng-click="editContact(contact._id)">Edit</button>
+							</td>
+							
+						</tr>
+						
+						
+					</tbody>
+				</table>
+		</div>
+
+		<footer class="jumbotron">
+			<div>
+				<p class="text-center"><u>All copyrights reserved</u></p>
+			</div>
+		</footer>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+		<script src="controllers/controller.js"></script>
+		
+	</body>
+</html>
